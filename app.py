@@ -8,5 +8,7 @@ app = Flask(__name__)
 app.register_blueprint(home_bp)
 app.register_blueprint(auth_bp)
 
+app.add_url_rule("/", endpoint="index")
+
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=8080)
