@@ -10,7 +10,7 @@ def login():
     if request.method == "POST":
         username = request.form['username']
         password = request.form['password']
-        login_details = load_all()
+        login_details = register.query.all()
         for data in login_details:
             print(data.name)
             print(data.password)
