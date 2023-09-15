@@ -2,10 +2,18 @@
 <html>
 <head>
 	<title>Register</title>
-	<style type="text/css">
-	</style>
+	<link href='/static/style.css' rel='stylesheet'>
 </head>
 <body>
 	<h3>Register</h3>
+	<form method='post'>
+		<label for='username'>USERNAME</label><br>
+		<input type="text" name="username" required placeholder="USERNAME"><br><br>
+		<label for="password">PASSWORD</label><br>
+		<input type="password" name="password" required><br><br>
+		<label for="secret_key">SECRET KEY</label><br>
+		<input type="integer" name="secret_key" required><br><br>
+		<input type="submit" name="submit" id="submit">
+	</form>
 </body>
 </html>
