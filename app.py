@@ -8,7 +8,7 @@ from model import db, register
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.secret_key = "Random strings"
+app.config['SECRET_KEY'] = "Random strings"
 db.init_app(app)
 
 app.register_blueprint(home_bp)

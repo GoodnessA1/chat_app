@@ -11,6 +11,7 @@ class register(db.Model):
 
 def load_all():
     data = register.query.all()
+    print("Number of info: ", len(data))
     return data
 
 def insert_all(x):
@@ -19,3 +20,10 @@ def insert_all(x):
     db.session.add(add_details)
     db.session.commit()
     print("-------- ADD SUCCESSFUL ----------")
+
+def query_some(x):
+    data = register.query.filter_by(name=x[0]).all()
+    for datum in data:
+        if (data.password == x[1] and data.secret_key == x[2]):
+            return (-1)
+    return (0)

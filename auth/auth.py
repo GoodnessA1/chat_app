@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, redirect, url_for, request, flash
-from model import db, register, load_all, insert_all
+from model import *
 
 auth_bp = Blueprint("auth_bp", __name__,
                     template_folder="templates", url_prefix=('/auth'),
@@ -18,15 +18,15 @@ def login():
             p = data.password
 
         if n != username:
-            error = "INVALID USERNAME"
+            error = "INVALID USERNAME OR PASSWORD"
 
         elif p != password:
-            error = "INVALID PASSWORD"
+            error = "INVALID USERNAME OR PASSWORD"
         
-        if error != None:
-            flash(error)
+        if error == None:
+            return redirect(url_for("index"))
 
-        return redirect(url_for("index"))
+        flash(error)
     return render_template("login.html")
 
 @auth_bp.route("/register", methods=("GET", "POST"))
@@ -36,8 +36,10 @@ def register():
         password = request.form['password']
         secret_key = request.form['secret_key']
         print(username + " " + password + " " + secret_key)
-
         add_details = [username, password, secret_key]
-        insert_all(add_details)
-        return redirect(url_for("auth_bp.login"))
+        try:
+            insert_all(add_details)
+            return redirect(url_for("auth_bp.login"))
+        except:
+            flash("USER ALREADY EXISTS")
     return render_template("register.html")
