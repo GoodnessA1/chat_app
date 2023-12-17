@@ -19,14 +19,19 @@
 		a {
 			color: white;
 		}
+
+		p {
+			color: #ffaa45;
+		}
 	</style>
 </head>
 <body>
-	<h1>Welcome to Goodness Online based testing system</h1>
-	<br>
-	<button id="admin"><a href={{ url_for("auth_bp.login") }}> ADMINISTRATOR </a></button>
-	</br>
-	<button id="student"><a href={{ url_for("auth_bp.login") }}> STUDENT </a></button>
-
+	<h1>Welcome Dear user</h1>
+	<p>This is your personal proctor web application for online testing</p>
+	<br><br>
+	<p>Do you wish to:</p>
+	<a href="">Take Test</a>
+	<p>or</p>
+	<a href="">Create Test</a>
 </body>
 </html>
